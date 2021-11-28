@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: rgb(180, 99, 235);
+        }
+
+        div{
+          
+            width: 500px;
+            height: 100px;
+            margin: 100px auto;
+            text-align: center;
+            box-shadow: 0 0 10px black;
+            padding: 10px;
+            background-color: cadetblue;
+          
+            
+        }
+    </style>
+
+    <script>
+        function fncreateElement() {
+
+        var inputvalue = document.getElementById("i1").value;
+
+        if(inputvalue=="") {
+            alert("plz enter some text")
+            return
+
+        }else{
+
+           //create new "p" element
+        var pRef = document.createElement("span");
+           pRef.style.color = "green";
+           pRef.style.marginRight = "10px";
+           pRef.style.marginTop = "20px";
+           pRef.append(inputvalue)
+
+            //edit button.............
+           var btnedit = document.createElement("button");
+            btnedit.innerText="Edit"
+            btnedit.style.marginRight = "10px";
+            btnedit.style.marginTop = "20px";
+
+            //delete button..............
+
+            var btndelete = document.createElement("button");
+            btndelete.innerText="delete"
+            btndelete.style.marginTop = "20px";
+
+            //edit element.................
+
+            btnedit.addEventListener('click', function() {pRef.contentEditable = true;})
+
+
+           // delete element-----------------------
+            btndelete.addEventListener('click', function() {pRef.remove();})
+            btndelete.addEventListener('click', function() {btnedit.remove();})
+            btndelete.addEventListener('click', function()  {btndelete.remove();})
+
+            var br = document.createElement('br')
+
+          document.querySelector('div').appendChild(pRef);
+          document.querySelector('div').appendChild(btnedit);
+          document.querySelector('div').appendChild(btndelete);
+          document.querySelector('div').appendChild(br);
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <div>
+       Enter Text: <input type="text" id="i1" />
+        <button onclick="fncreateElement()">Add new Element</button> <br>
+      
+    </div>
+    
+</body>
+</html>
